@@ -10,34 +10,25 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LoginComponent } from './login/login.component';
+import { MySurveysComponent } from './my-surveys/my-surveys.component';
+import { MaterialModule } from './material/material.module';
 
-import {MatToolbarModule} from '@angular/material/toolbar';
-import { MatIconModule } from '@angular/material/icon';
-const materialModules = [
-  MatToolbarModule,
-  MatIconModule
-]
 
-const appRoutes: Routes = [
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'createSurvey', component: CreateSurveyComponent },
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: '**', component: PageNotFoundComponent }
-  ];
+
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
     CreateSurveyComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    MySurveysComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot(appRoutes),
-    materialModules
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
