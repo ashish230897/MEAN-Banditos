@@ -15,8 +15,10 @@ import { MaterialModule } from './material/material.module';
 
 import { SocialLoginModule } from 'angularx-social-login';
 import { AuthServiceConfig, GoogleLoginProvider } from 'angularx-social-login';
-import { FormsModule } from '@angular/forms';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { GenerateSurveyComponent } from './generate-survey/generate-survey.component';
+import { CreateQuestionComponent } from './create-question/create-question.component';
 
 const config = new AuthServiceConfig([
   {
@@ -37,7 +39,9 @@ export function provideConfig() {
     CreateSurveyComponent,
     PageNotFoundComponent,
     MySurveysComponent,
-    LoginComponent
+    LoginComponent,
+    GenerateSurveyComponent,
+    CreateQuestionComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,6 +50,7 @@ export function provideConfig() {
     MaterialModule,
     SocialLoginModule,
     FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [
     {
@@ -53,6 +58,9 @@ export function provideConfig() {
       useFactory: provideConfig
     }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    CreateQuestionComponent
+  ]
 })
 export class AppModule { }

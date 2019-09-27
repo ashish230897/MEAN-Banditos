@@ -6,29 +6,50 @@ import { MatIconModule } from '@angular/material/icon';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatStepperModule} from '@angular/material/stepper';
-import {MatCardModule} from '@angular/material/card';
+import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
-
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
+import {MatCardModule} from '@angular/material/card';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatDividerModule} from '@angular/material/divider';
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
-    MatToolbarModule,
+    MatToolbarModule, 
     MatIconModule, 
     MatGridListModule, 
-    MatExpansionModule,
-    MatCardModule,
+    MatExpansionModule, 
+    MatFormFieldModule, 
+    MatStepperModule, 
     MatButtonModule,
+    MatInputModule, 
+    MatSelectModule, 
+    MatCardModule, 
+    MatTabsModule, 
+    MatDialogModule, 
+    MatChipsModule,
+    MatDividerModule, 
   ],
   exports: [
     MatToolbarModule, 
-    MatIconModule,
+    MatIconModule, 
     MatGridListModule, 
     MatExpansionModule, 
-    MatStepperModule,
-    MatCardModule,
+    MatFormFieldModule, 
+    MatStepperModule, 
     MatButtonModule,
+    MatInputModule, 
+    MatSelectModule, 
+    MatCardModule, 
+    MatTabsModule,  
+    MatDialogModule, 
+    MatChipsModule,
+    MatDividerModule,
   ]
 })
 export class MaterialModule { }
