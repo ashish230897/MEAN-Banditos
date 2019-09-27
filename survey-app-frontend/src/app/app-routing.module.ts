@@ -6,6 +6,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { MySurveysComponent } from './my-surveys/my-surveys.component';
 import { CreateQuestionComponent } from './create-question/create-question.component';
 import { GenerateSurveyComponent } from './generate-survey/generate-survey.component';
+import { LoginComponent } from './login/login.component';
 
 
 const routes: Routes = [
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'createSurvey', component: CreateSurveyComponent },
   { path: 'mySurvey', component: MySurveysComponent },
   { path: 'createQuestion', component: CreateQuestionComponent },
+  { path: 'login', component: LoginComponent},
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
   ];
