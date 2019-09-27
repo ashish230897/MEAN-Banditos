@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-generate-survey',
@@ -18,7 +19,7 @@ export class GenerateSurveyComponent implements OnInit {
     {value:"Text", viewValue:"Text"}
   ];
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private router: Router) { }
 
   ngOnInit() {
     this.firstFormGroup = this.formBuilder.group({
@@ -29,9 +30,9 @@ export class GenerateSurveyComponent implements OnInit {
     });
   }
 
-  temp(){
+  createSurvey(){
     console.log(this.secondFormGroup);
-    
+    this.router.navigate(['/createSurvey/',this.firstFormGroup.value]);
   }
 
 }
