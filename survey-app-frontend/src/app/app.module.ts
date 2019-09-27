@@ -13,7 +13,21 @@ import { LoginComponent } from './login/login.component';
 import { MySurveysComponent } from './my-surveys/my-surveys.component';
 import { MaterialModule } from './material/material.module';
 
+import { SocialLoginModule } from 'angularx-social-login';
+import { AuthServiceConfig, GoogleLoginProvider } from 'angularx-social-login';
+import { FormsModule } from '@angular/forms';
 
+
+const config = new AuthServiceConfig([
+  {
+    id: GoogleLoginProvider.PROVIDER_ID,
+    provider: new GoogleLoginProvider('463283152425-im6kcpmf036p3aig6hhdqprqr7icfl0t.apps.googleusercontent.com')
+  },
+])
+
+export function provideConfig() {
+  return config;
+}
 
 
 @NgModule({
@@ -22,15 +36,23 @@ import { MaterialModule } from './material/material.module';
     DashboardComponent,
     CreateSurveyComponent,
     PageNotFoundComponent,
-    MySurveysComponent
+    MySurveysComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    SocialLoginModule,
+    FormsModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: AuthServiceConfig,
+      useFactory: provideConfig
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
