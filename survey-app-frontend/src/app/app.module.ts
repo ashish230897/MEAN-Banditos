@@ -13,7 +13,9 @@ import { LoginComponent } from './login/login.component';
 import { MySurveysComponent } from './my-surveys/my-surveys.component';
 import { MaterialModule } from './material/material.module';
 
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { GenerateSurveyComponent } from './generate-survey/generate-survey.component';
+import { CreateQuestionComponent } from './create-question/create-question.component';
 
 
 @NgModule({
@@ -22,15 +24,22 @@ import { MaterialModule } from './material/material.module';
     DashboardComponent,
     CreateSurveyComponent,
     PageNotFoundComponent,
-    MySurveysComponent
+    MySurveysComponent,
+    GenerateSurveyComponent,
+    CreateQuestionComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    CreateQuestionComponent
+  ]
 })
 export class AppModule { }
