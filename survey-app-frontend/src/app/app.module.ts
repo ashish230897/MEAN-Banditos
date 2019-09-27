@@ -20,15 +20,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GenerateSurveyComponent } from './generate-survey/generate-survey.component';
 import { CreateQuestionComponent } from './create-question/create-question.component';
 
-const config = new AuthServiceConfig([
-  {
-    id: GoogleLoginProvider.PROVIDER_ID,
-    provider: new GoogleLoginProvider('463283152425-im6kcpmf036p3aig6hhdqprqr7icfl0t.apps.googleusercontent.com')
-  },
-])
 
 export function provideConfig() {
-  return config;
+  return new AuthServiceConfig([
+    {
+      id: GoogleLoginProvider.PROVIDER_ID,
+      provider: new GoogleLoginProvider('463283152425-im6kcpmf036p3aig6hhdqprqr7icfl0t.apps.googleusercontent.com')
+    },
+  ]);
 }
 
 
@@ -52,6 +51,9 @@ export function provideConfig() {
     FormsModule,
     ReactiveFormsModule,
   ],
+  entryComponents: [
+    CreateQuestionComponent
+  ],
   providers: [
     {
       provide: AuthServiceConfig,
@@ -59,8 +61,5 @@ export function provideConfig() {
     }
   ],
   bootstrap: [AppComponent],
-  entryComponents: [
-    CreateQuestionComponent
-  ]
 })
 export class AppModule { }
