@@ -7,13 +7,14 @@ import { MySurveysComponent } from './my-surveys/my-surveys.component';
 import { CreateQuestionComponent } from './create-question/create-question.component';
 import { GenerateSurveyComponent } from './generate-survey/generate-survey.component';
 import { LoginComponent } from './login/login.component';
+import { AuthGuardService as AuthGuard } from './auth-guard.service';
 
 
 const routes: Routes = [
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'createSurvey', component: CreateSurveyComponent },
-  { path: 'mySurvey', component: MySurveysComponent },
-  { path: 'createQuestion', component: CreateQuestionComponent },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+  { path: 'createSurvey', component: CreateSurveyComponent, canActivate: [AuthGuard]  },
+  { path: 'mySurvey', component: MySurveysComponent, canActivate: [AuthGuard]  },
+  { path: 'createQuestion', component: CreateQuestionComponent, canActivate: [AuthGuard]  },
   { path: 'login', component: LoginComponent},
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }

@@ -1,8 +1,9 @@
 <mat-toolbar color="primary">
     <mat-toolbar-row>
-        <span>Survey Banditos</span>
+        <span class="mat-brand">Survey Banditos</span>
+        <a routerLink="/dashboard"> <span class="link-text"> Dashboard </span> </a>
         <span class="example-spacer"></span>
-        
+
         <a *ngIf="loggedIn" routerLink="/login" ><mat-icon [ngStyle]="{'color':'white'}" class="example-icon" aria-hidden="false" aria-label="Example heart icon">person</mat-icon></a>
     </mat-toolbar-row>
 </mat-toolbar>
