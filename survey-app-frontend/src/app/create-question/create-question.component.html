@@ -1,0 +1,32 @@
+<p>create-question works!</p>
+<h1 mat-dialog-title>Hi</h1>
+<div mat-dialog-content>
+    <form [formGroup]="tempForm">
+        <mat-form-field>
+            <mat-select placeholder="Select Question Type" formControlName="qType" required>
+                <mat-option *ngFor="let type of questionTypes" [value]="type.value">
+                    {{type.viewValue}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-divider></mat-divider>
+        <mat-form-field>
+            <input matInput formControlName="qStatement" placeholder="Quesstion Statement" />
+        </mat-form-field>
+        <mat-divider></mat-divider>
+        <mat-form-field>
+            <input matInput placeholder="Add Option" #optValue />
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="addOption(optValue.value)">Add</button>
+        <mat-chip-list #chipList aria-label="Option selection">
+            <mat-chip *ngFor="let option of tempForm.controls.qOptionList.value" [selectable]="selectable" [removable]="removable" (removed)="removeOption(option)">
+                {{option.value}}
+                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+            </mat-chip>
+        </mat-chip-list>
+    </form>
+</div>
+<div mat-dialog-actions>
+  <!-- <button mat-button (click)="onNoClick()">No Thanks</button> -->
+  <button mat-button [mat-dialog-close]="tempForm.value" cdkFocusInitial>Ok</button>
+</div>
