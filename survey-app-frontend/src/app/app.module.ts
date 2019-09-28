@@ -19,6 +19,7 @@ import { AuthServiceConfig, GoogleLoginProvider } from 'angularx-social-login';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GenerateSurveyComponent } from './generate-survey/generate-survey.component';
 import { CreateQuestionComponent } from './create-question/create-question.component';
+import { TakeSurveyComponent } from './take-survey/take-survey.component';
 
 
 export function provideConfig() {
@@ -41,6 +42,7 @@ export function provideConfig() {
     LoginComponent,
     GenerateSurveyComponent,
     CreateQuestionComponent,
+    TakeSurveyComponent,
   ],
   imports: [
     BrowserModule,

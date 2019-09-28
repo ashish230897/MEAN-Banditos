@@ -8,6 +8,7 @@ import { CreateQuestionComponent } from './create-question/create-question.compo
 import { GenerateSurveyComponent } from './generate-survey/generate-survey.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuardService as AuthGuard } from './auth-guard.service';
+import { TakeSurveyComponent } from './take-survey/take-survey.component';
 
 
 const routes: Routes = [
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'mySurvey', component: MySurveysComponent, canActivate: [AuthGuard]  },
   { path: 'createQuestion', component: CreateQuestionComponent, canActivate: [AuthGuard]  },
   { path: 'login', component: LoginComponent},
+  { path: 'collectsurvey', component: TakeSurveyComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
   ];

@@ -15,6 +15,9 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatRadioModule} from '@angular/material/radio';
+
 
 @NgModule({
   declarations: [],
@@ -33,7 +36,9 @@ import {MatDividerModule} from '@angular/material/divider';
     MatTabsModule, 
     MatDialogModule, 
     MatChipsModule,
-    MatDividerModule, 
+    MatDividerModule,
+    MatCheckboxModule,
+    MatRadioModule, 
   ],
   exports: [
     MatToolbarModule, 
@@ -50,6 +55,8 @@ import {MatDividerModule} from '@angular/material/divider';
     MatDialogModule, 
     MatChipsModule,
     MatDividerModule,
+    MatCheckboxModule,
+    MatRadioModule,
   ]
 })
 export class MaterialModule { }
