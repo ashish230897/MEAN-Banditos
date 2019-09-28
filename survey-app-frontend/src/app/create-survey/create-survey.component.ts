@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { CreateQuestionComponent } from '../create-question/create-question.component';
+import { ActivatedRoute } from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
 
 interface questionInterface{
   qId : Number;
@@ -20,8 +22,15 @@ export class CreateSurveyComponent implements OnInit {
 
   questionList: Array<questionInterface>;
   cnt = 0;
-
-  constructor(private dialog:MatDialog, private formBuilder: FormBuilder) { }
+  mediaURL: any;
+  constructor(private dialog:MatDialog, private formBuilder: FormBuilder, private route: ActivatedRoute, private _sanitizer: DomSanitizer) {
+    
+    this.route.params.subscribe(param => {
+      console.log(param);
+      // this.mediaURL = param.url;
+      this.mediaURL = param.url ? this._sanitizer.bypassSecurityTrustResourceUrl(param.url) : '';   
+    });
+  }
 
   ngOnInit() {
     this.questionList = [];
