@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 interface audioType{
   title: String;
@@ -12,24 +13,9 @@ interface audioType{
 })
 export class MySurveysComponent implements OnInit {
 
-  audioItems: audioType[] = [
+  surveyList: audioType[] = [
     {
-      title: "A",
-      description: "B"
-    },
-    {
-      title: "A",
-      description: "B"
-    },
-    {
-      title: "A",
-      description: "B"
-    }
-  ];
-
-  videoItems: audioType[] = [
-    {
-      title: "Abcsac",
+      title: "Title",
       description: "Description"
     },
     {
@@ -42,24 +28,18 @@ export class MySurveysComponent implements OnInit {
     }
   ];
 
-  textItems: audioType[] = [
-    {
-      title: "A",
-      description: "B"
-    },
-    {
-      title: "A",
-      description: "B"
-    },
-    {
-      title: "A",
-      description: "B"
-    }
-  ];
-
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit() {
+  }
+
+  analyzeSurvey(){
+    this.router.navigate(['/showanalysis']);
+  }
+
+  deleteSurvey(){
+    console.log("Delete Survey");
+    
   }
 
 }

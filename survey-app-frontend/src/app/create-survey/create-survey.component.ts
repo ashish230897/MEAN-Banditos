@@ -34,16 +34,19 @@ export class CreateSurveyComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed', result);
-      let obj: questionInterface = {
-        qId : this.cnt,
-        qType: result.qType,
-        qStatement: result.qStatement,
-        qOptionList: result.qOptionList
+      if(result!=undefined){
+        let obj: questionInterface = {
+          qId : this.cnt,
+          qType: result.qType,
+          qStatement: result.qStatement,
+          qOptionList: result.qOptionList
+        }
+        this.cnt++;
+        console.log(this.questionList, " ", typeof this.questionList);
+        
+        this.questionList.push(obj);
       }
-      this.cnt++;
-      console.log(this.questionList, " ", typeof this.questionList);
       
-      this.questionList.push(obj);
     });
   }
 

@@ -17,11 +17,36 @@
       <mat-card-title>{{ques.qStatement}}</mat-card-title>
       <mat-card-subtitle>{{ques.qType}}</mat-card-subtitle>
       <mat-card-content>
-        <ol>
-            <li *ngFor="let opt of ques.qOptionList">
-                {{opt.value}}
-            </li>
-        </ol>
+          <div *ngIf="ques.qType=='descriptive'">
+            <mat-form-field>
+              <input matInput placeholder="Description" />
+            </mat-form-field>
+          </div>
+          <div *ngIf="ques.qType=='binary'">
+                <mat-radio-group class="example-radio-group">
+                  <mat-radio-button class="example-radio-button" name="radio" value="Yes">
+                    Yes
+                  </mat-radio-button>
+                  <mat-radio-button class="example-radio-button" name="radio" value="No">
+                    No
+                  </mat-radio-button>
+                </mat-radio-group>
+          </div>
+          <div *ngIf="ques.qType=='singleChoice'">
+              <mat-radio-group class="example-radio-group">
+              <mat-radio-button class="example-radio-button" *ngFor="let opt  of ques.qOptionList" [value]="opt.value">
+                  {{opt.value}}
+                </mat-radio-button>
+                </mat-radio-group>
+          </div>
+          <div class="example-mat-checkbox" *ngIf="ques.qType=='multiChoice'">
+            <mat-checkbox *ngFor="let opt of ques.qOptionList">
+              {{opt.value}}
+            </mat-checkbox>
+          </div>
+
+
+        
           
       </mat-card-content>
       

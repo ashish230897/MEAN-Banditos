@@ -20,7 +20,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GenerateSurveyComponent } from './generate-survey/generate-survey.component';
 import { CreateQuestionComponent } from './create-question/create-question.component';
 import { TakeSurveyComponent } from './take-survey/take-survey.component';
+import { WordCloudComponent } from './word-cloud/word-cloud.component';
+import { ShowAnalysisComponent } from './show-analysis/show-analysis.component';
 
+import { ChartModule } from 'primeng/chart';
 
 export function provideConfig() {
   return new AuthServiceConfig([
@@ -43,6 +46,8 @@ export function provideConfig() {
     GenerateSurveyComponent,
     CreateQuestionComponent,
     TakeSurveyComponent,
+    WordCloudComponent,
+    ShowAnalysisComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,6 +57,7 @@ export function provideConfig() {
     SocialLoginModule,
     FormsModule,
     ReactiveFormsModule,
+    ChartModule
   ],
   entryComponents: [
     CreateQuestionComponent

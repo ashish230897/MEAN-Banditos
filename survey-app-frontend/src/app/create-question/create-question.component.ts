@@ -10,9 +10,10 @@ export class CreateQuestionComponent implements OnInit {
 
   tempForm: FormGroup;
   questionTypes: Array<any> = [
+    {value: "descriptive", viewValue: "Descriptive"},
+    {value: "binary", viewValue: "True/False"},
     {value: "multiChoice", viewValue: "Multiple Choice"},
-    {value: "Simple", viewValue: "Simple"},
-    {value: "binary", viewValue: "True/False"}
+    {value: "singleChoice", viewValue: "Single Choice"},
   ];
 
   counter = 0;
