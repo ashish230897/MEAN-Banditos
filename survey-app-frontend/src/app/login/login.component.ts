@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AuthService } from 'angularx-social-login';
 import { SocialUser } from 'angularx-social-login';
 import { GoogleLoginProvider } from 'angularx-social-login';
+import { OrganiserService } from '../organiser.service';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,8 @@ export class LoginComponent implements OnInit {
   
   constructor(
     private authService: AuthService, 
-    private router: Router
+    private router: Router,
+    private orgService: OrganiserService
   ) { }
 
   ngOnInit() {
@@ -37,9 +39,14 @@ export class LoginComponent implements OnInit {
       if(this.user) {
         this.ourUser = {
           name: this.user.name,
-          email: this.user.email,
+          id: this.user.email,
           photoUrl: this.user.photoUrl
         }
+        this.orgService.createOrg(this.ourUser).subscribe((success) => {
+          console.log("success" , success);
+        }, (error) => {
+          console.log("failure" , error);
+        });
         this.setUserSession(this.user);
         this.router.navigate(["/dashboard"]);
       }

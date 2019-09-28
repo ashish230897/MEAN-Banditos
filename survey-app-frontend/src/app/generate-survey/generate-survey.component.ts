@@ -36,7 +36,8 @@ export class GenerateSurveyComponent implements OnInit {
     
     console.log(this.secondFormGroup);
     let routeParams = {
-      url : this.secondFormGroup.value.mediaURL
+      url : this.secondFormGroup.value.mediaURL,
+      name : this.secondFormGroup.value.secondCtrl
     }
     this.router.navigate(['/createSurvey/',routeParams]);
   }

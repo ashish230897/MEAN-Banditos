@@ -9,22 +9,24 @@ export class ShowAnalysisComponent implements OnInit {
   dataChart : any;
   constructor() { 
     this.dataChart = {
-      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+      labels: ['Option-A','Option-B','Option-C','Option-D'],
       datasets: [
           {
-              label: 'First Dataset',
-              data: [65, 59, 80, 81, 56, 55, 40],
-              fill: false,
-              borderColor: '#4bc0c0'
-          },
-          {
-              label: 'Second Dataset',
-              data: [28, 48, 40, 19, 86, 27, 90],
-              fill: false,
-              borderColor: '#565656'
-          }
-      ]
-  }
+              data: [170, 57, 96, 107],
+              backgroundColor: [
+                  "#FF6384",
+                  "#36A2EB",
+                  "#FFCE56",
+                  "#36A2E5"
+              ],
+              hoverBackgroundColor: [
+                  "#FF6384",
+                  "#36A2EB",
+                  "#FFCE56",
+                  "#36A2E5"
+              ]
+          }]    
+      };
   }
 
   ngOnInit() {

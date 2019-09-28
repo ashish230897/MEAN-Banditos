@@ -1,19 +1,28 @@
 <div class="container-fluid">
     <div class="row">
-      <h3>Question Title</h3>
-      <iframe width="956" height="538" [src]="mediaURL" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <div class="col-md-4 offset-5">
+          <h3>Survey Title : {{qTitle}}</h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8 offset-2">
+          <iframe *ngIf="mediaURL" width="956" height="538" [src]="mediaURL" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
     </div>
     <div class="spacer_mk3"></div>
   <div class="row">
-    <div class="col-md-2 offset-10">
+    
+    <div class="col-md-2">
         <span>Add Question </span>
       <button mat-fab color="primary" (click)="addQuestion()"><mat-icon aria-hidden="false" aria-label="Example Add icon">add</mat-icon></button>
+    </div>
+    <div class="col-md-2 offset-8">
+        <button mat-raised-button color="primary" (click)="createForm()">Create Form</button>
     </div>
   </div>
   <br />
   <mat-divider></mat-divider>
   <div class="row">
-    <h4>Question List</h4>
     <mat-card class="col-md-10 offset-1 example card" *ngFor="let ques of questionList">
       <mat-card-title>{{ques.qStatement}}</mat-card-title>
       <mat-card-subtitle>{{ques.qType}}</mat-card-subtitle>
@@ -51,11 +60,12 @@
           
       </mat-card-content>
       
+
+
       <button mat-button color="primary" (click)="removeQuestion(ques)">Delete</button>
     </mat-card>
 
     
 
   </div>
-
 </div>
