@@ -1,0 +1,38 @@
+[
+    {
+        "qId":"Q1001",
+        "question":"who do you think will win 2024?",
+        "type":"1",
+        "options":["BJP","Congress","Coilation"],
+        "answers":[]
+    },
+    {
+        "qId":"Q1002",
+        "question":"will BJP win 2024?",
+        "type":"2",
+        "options":["Yes","No"],
+        "answers":[]
+    },
+    {
+        "qId":"Q1003",
+        "question":"when will Dhoni Retire ?",
+        "type":"1",
+        "options":["2020","2023","Never"],
+        "answers":[]
+    },
+    {
+        "qId":"Q1004",
+        "question":" will Dhoni Retire?",
+        "type":"2",
+        "options":["YES","NO"],
+        "answers":[]
+    },
+
+    {
+        "qId":"Q1005",
+        "question":"who will win next T20 WC",
+        "type":"2",
+        "options":["WI","AUS","ENG","IND"],
+        "answers":[]
+    }
+]
