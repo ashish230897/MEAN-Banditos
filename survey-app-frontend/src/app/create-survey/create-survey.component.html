@@ -1,1 +1,60 @@
-<p>create-survey works!</p>
+<div class="container-fluid">
+    <div class="row">
+      <h3>Question Title</h3>
+    </div>
+    <div class="spacer_mk3"></div>
+  <div class="row">
+    <div class="col-md-2 offset-10">
+        <span>Add Question </span>
+      <button mat-fab color="primary" (click)="addQuestion()"><mat-icon aria-hidden="false" aria-label="Example Add icon">add</mat-icon></button>
+    </div>
+  </div>
+  <br />
+  <mat-divider></mat-divider>
+  <div class="row">
+    <h4>Question List</h4>
+    <mat-card class="col-md-10 offset-1 example card" *ngFor="let ques of questionList">
+      <mat-card-title>{{ques.qStatement}}</mat-card-title>
+      <mat-card-subtitle>{{ques.qType}}</mat-card-subtitle>
+      <mat-card-content>
+          <div *ngIf="ques.qType=='descriptive'">
+            <mat-form-field>
+              <input matInput placeholder="Description" />
+            </mat-form-field>
+          </div>
+          <div *ngIf="ques.qType=='binary'">
+                <mat-radio-group class="example-radio-group">
+                  <mat-radio-button class="example-radio-button" name="radio" value="Yes">
+                    Yes
+                  </mat-radio-button>
+                  <mat-radio-button class="example-radio-button" name="radio" value="No">
+                    No
+                  </mat-radio-button>
+                </mat-radio-group>
+          </div>
+          <div *ngIf="ques.qType=='singleChoice'">
+              <mat-radio-group class="example-radio-group">
+              <mat-radio-button class="example-radio-button" *ngFor="let opt  of ques.qOptionList" [value]="opt.value">
+                  {{opt.value}}
+                </mat-radio-button>
+                </mat-radio-group>
+          </div>
+          <div class="example-mat-checkbox" *ngIf="ques.qType=='multiChoice'">
+            <mat-checkbox *ngFor="let opt of ques.qOptionList">
+              {{opt.value}}
+            </mat-checkbox>
+          </div>
+
+
+        
+          
+      </mat-card-content>
+      
+      <button mat-button color="primary" (click)="removeQuestion(ques)">Delete</button>
+    </mat-card>
+
+    
+
+  </div>
+
+</div>

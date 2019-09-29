@@ -1,27 +1,37 @@
 <!-- <mat-grid-list cols="12">
     <mat-grid-tile colspan="2"></mat-grid-tile>
     <mat-grid-tile colspan="8"> -->
-        <div class="spacer_mk1"></div>
-        <mat-accordion>
-            <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        Create New Survey Form
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
-            </mat-expansion-panel>
-            
-            <div class="spacer_mk1"></div>
-
-            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        My Surveys
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
-            </mat-expansion-panel>
-        </mat-accordion>
-
-    <!-- </mat-grid-tile>
-    <mat-grid-tile colspan="2"></mat-grid-tile>
-</mat-grid-list> -->
+        <div class="container-fluid">
+            <div class="row no-gutters">
+                <div class="col-md-1"></div>
+                <div class="col-md-9">
+                        <div class="spacer_mk1"></div>
+                        <mat-accordion>
+                            <mat-expansion-panel>
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                        Create New Survey
+                                    </mat-panel-title>
+                                </mat-expansion-panel-header>
+                                <mat-divider></mat-divider>
+                                <app-generate-survey></app-generate-survey>
+                            </mat-expansion-panel>
+                            
+                            <div class="spacer_mk1"></div>
+                
+                            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                        My Surveys
+                                    </mat-panel-title>
+                                </mat-expansion-panel-header>
+                                <mat-divider></mat-divider>
+                                <app-my-surveys></app-my-surveys>
+                                
+                            </mat-expansion-panel>
+                        </mat-accordion>            
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+        </div>
+        

@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'survey-app-frontend';
+
+  loggedIn = true;
+
+  ngOnInit() {
+    if(sessionStorage.getItem('name')) {
+      this.loggedIn = true;
+    }
+  }
 }

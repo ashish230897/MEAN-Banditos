@@ -5,3 +5,13 @@
   .example-spacer {
     flex: 1 1 auto;
   }
+
+  .link-text {
+    color: white;
+    padding: 0 14px;
+  }
+
+  .mat-brand {
+    color: lightcoral;
+    font-size: 20px;
+  }

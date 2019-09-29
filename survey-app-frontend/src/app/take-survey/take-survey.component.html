@@ -1,0 +1,43 @@
+<div class="container pt-4">
+    <div class="row">
+        <div class="col-md-6 offset-md-3" *ngIf="survey">
+            <form class="example-form">
+                <h4 > Give Survey - {{survey.title}} </h4>
+                <div *ngIf="survey.pathname">
+                    <iframe width="560" height="315" [src]="safeUrl" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <mat-card class="question" *ngFor="let ques of survey.questions; let i = index">
+                    <mat-card-header>
+                        <mat-card-title> {{i+1}}. {{ques.question}} </mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <div *ngIf="ques.type === 1">
+                            <section class="example-section">
+                                <mat-checkbox class="options" *ngFor="let opt of ques.options; let i=index"
+                                    class="example-margin"
+                                    >
+                                    <span class="option-value">{{opt}} </span>
+                                </mat-checkbox>
+                            </section>
+                        </div>
+                        <div *ngIf="ques.type === 2">
+                            <mat-radio-group
+                                aria-labelledby="example-radio-group-label"
+                                class="example-radio-group"
+                                >
+                                <mat-radio-button class="example-radio-button" *ngFor="let option of ques.options" [value]="option">
+                                    {{option}}
+                                </mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                        <div *ngIf="ques.type === 3">
+                            <mat-form-field class="example-full-width">
+                                <textarea matInput placeholder="Leave a comment"></textarea>
+                            </mat-form-field>    
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </form>
+        </div>
+    </div>
+</div>

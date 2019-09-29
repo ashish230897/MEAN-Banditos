@@ -13,7 +13,26 @@ import { LoginComponent } from './login/login.component';
 import { MySurveysComponent } from './my-surveys/my-surveys.component';
 import { MaterialModule } from './material/material.module';
 
+import { SocialLoginModule } from 'angularx-social-login';
+import { AuthServiceConfig, GoogleLoginProvider } from 'angularx-social-login';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { GenerateSurveyComponent } from './generate-survey/generate-survey.component';
+import { CreateQuestionComponent } from './create-question/create-question.component';
+import { TakeSurveyComponent } from './take-survey/take-survey.component';
+import { WordCloudComponent } from './word-cloud/word-cloud.component';
+import { ShowAnalysisComponent } from './show-analysis/show-analysis.component';
+
+import { ChartModule } from 'primeng/chart';
+
+export function provideConfig() {
+  return new AuthServiceConfig([
+    {
+      id: GoogleLoginProvider.PROVIDER_ID,
+      provider: new GoogleLoginProvider('463283152425-im6kcpmf036p3aig6hhdqprqr7icfl0t.apps.googleusercontent.com')
+    },
+  ]);
+}
 
 
 @NgModule({
@@ -22,15 +41,33 @@ import { MaterialModule } from './material/material.module';
     DashboardComponent,
     CreateSurveyComponent,
     PageNotFoundComponent,
-    MySurveysComponent
+    MySurveysComponent,
+    LoginComponent,
+    GenerateSurveyComponent,
+    CreateQuestionComponent,
+    TakeSurveyComponent,
+    WordCloudComponent,
+    ShowAnalysisComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    SocialLoginModule,
+    FormsModule,
+    ReactiveFormsModule,
+    ChartModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  entryComponents: [
+    CreateQuestionComponent
+  ],
+  providers: [
+    {
+      provide: AuthServiceConfig,
+      useFactory: provideConfig
+    }
+  ],
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
