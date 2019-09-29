@@ -33,14 +33,14 @@ def spec():
 def preprocess_controller():
 	# Preprocessing steps -> lowering, removing stopwords, contraction mapping, removing punctuation, deemojify
 	answers_array = request.json['answers']
-	print(answers_array)
 	preprocessed = []
 	text = ""
 	for i in answers_array:
 		text = i.lower()  # Lowering text
 		text = " ".join([a for a in i.split() if a not in stop_words])  # removing stopwords
+		print(text)		
 		# Expanding the contractions
-		text = ' '.join([contraction_mapping[t] if t in contraction_mapping else t for t in i.split(" ")])
+		text = ' '.join([contraction_mapping[t] if t in contraction_mapping else t for t in text.split(" ")])
 
 		punct = "/-'?!.,#$%\'()*+-/:;<=>@[\\]^_`{|}~" + '""“”’' + '∞θ÷α•à−β∅³π‘₹´°£€\×™√²—–&'  # Removing punctuations
 		for p in punct:
