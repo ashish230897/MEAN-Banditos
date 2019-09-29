@@ -30,6 +30,8 @@ routing.post('/insertSurvey',  (req, res, next) => {
     let object = req.body;
     console.log("request for inserting survey received!!")
     service.insertSurvey(object).then((data) => {
+        console.log(data);
+        
         if (data) {
             res.status(201);
             res.json({ message: "Added a new survey" });

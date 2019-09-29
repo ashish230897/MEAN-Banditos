@@ -3,7 +3,7 @@
           <form [formGroup]="firstFormGroup">
             <ng-template matStepLabel>Survey Type:</ng-template>
             <mat-form-field>
-                    <mat-select placeholder="Select" formControlName="surveyTypeSelect" required>
+                    <mat-select placeholder="Select" formControlName="surveyTypeSelect" #surveyType required>
                         <mat-option *ngFor="let type of surveyTypes" [value]="type.value">
                             {{type.viewValue}}
                         </mat-option>
@@ -11,21 +11,23 @@
               <!-- <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required> -->
             </mat-form-field>
             <div>
-              <button mat-button  color="primary" matStepperNext>Next</button>
+              <button mat-raised-button class="example-button" color="primary" matStepperNext>Next</button>
             </div>
           </form>
         </mat-step>
         <mat-step [stepControl]="secondFormGroup">
           <form [formGroup]="secondFormGroup">
-            <ng-template matStepLabel>Fill out your address</ng-template>
-                    <input class="ng-hide" id="input-file-id" multiple type="file" formControlName="secondCtrl" required />
-                    
-                <!-- <input matInput placeholder="Address" formControlName="secondCtrl" required> -->
-            
+            <ng-template matStepLabel>Title for survey</ng-template>
+            <mat-form-field>
+                <input matInput placeholder="Title" formControlName="secondCtrl" required>
+              </mat-form-field>
+              <br />
+              <mat-form-field *ngIf="surveyType.value!='simpleText'">
+                  <input matInput placeholder="URL Link" formControlName="mediaURL" required>
+              </mat-form-field>
             <div>
-                {{secondFormGroup.value.secondCtrl}}
-                <button mat-button color="primary" matStepperPrevious (click)="createSurvey()">Create</button>
-                <button mat-button color="primary" (click)="stepper.reset()">Reset</button>
+                <button mat-raised-button class="example-button" color="primary" matStepperPrevious (click)="createSurvey()">Create</button>
+                <button mat-raised-button class="example-button" color="primary" (click)="stepper.reset()">Reset</button>
             </div>
           </form>
         </mat-step>

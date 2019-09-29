@@ -14,9 +14,9 @@ export class GenerateSurveyComponent implements OnInit {
   secondFormGroup: FormGroup;
 
   surveyTypes: Array<any> = [
-    {value:"Audio", viewValue:"Audio"},
-    {value:"Video", viewValue:"Video"},
-    {value:"Text", viewValue:"Text"}
+    {value:"audio", viewValue:"Audio"},
+    {value:"video", viewValue:"Video"},
+    {value:"simpleText", viewValue:"Simple Text"}
   ];
 
   constructor(private formBuilder: FormBuilder, private router: Router) { }
@@ -26,13 +26,20 @@ export class GenerateSurveyComponent implements OnInit {
       surveyTypeSelect: ['', Validators.required]
     });
     this.secondFormGroup = this.formBuilder.group({
-      secondCtrl: ['', Validators.required]
+      secondCtrl: ['', Validators.required],
+      mediaURL: ['',Validators.required] 
     });
   }
 
   createSurvey(){
+    console.log(this.firstFormGroup);
+    
     console.log(this.secondFormGroup);
-    this.router.navigate(['/createSurvey/',this.firstFormGroup.value]);
+    let routeParams = {
+      url : this.secondFormGroup.value.mediaURL,
+      name : this.secondFormGroup.value.secondCtrl
+    }
+    this.router.navigate(['/createSurvey/',routeParams]);
   }
 
 }

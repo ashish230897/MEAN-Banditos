@@ -7,8 +7,9 @@ import { Observable } from 'rxjs';
 })
 export class SurveyService {
 
-  allSurveyUrl = "localhost:3000/getsurveys";
-  surveyDetailsUrl = "localhost:3000/getsurveydetails";
+  allSurveyUrl = "http://localhost:3000/getsurveys";
+  surveyDetailsUrl = "http://localhost:3000/getsurveydetails";
+  insertSurveyUrl = "http://localhost:3000/insertSurvey";
 
   constructor(private http: HttpClient) { }
 
@@ -18,5 +19,11 @@ export class SurveyService {
 
   getSurveyDetails(surveyId: String) : Observable<any> {
     return this.http.get(this.surveyDetailsUrl + `/${surveyId}`);
+  }
+
+  insertSurvey(obj:any): Observable<any> {
+    console.log(obj);
+    
+    return this.http.post(this.insertSurveyUrl, obj);
   }
 }

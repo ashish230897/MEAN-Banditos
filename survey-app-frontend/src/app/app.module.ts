@@ -22,6 +22,7 @@ import { CreateQuestionComponent } from './create-question/create-question.compo
 import { TakeSurveyComponent } from './take-survey/take-survey.component';
 import { WordCloudComponent } from './word-cloud/word-cloud.component';
 import { ShowAnalysisComponent } from './show-analysis/show-analysis.component';
+import {  HttpClientModule  } from '@angular/common/http';
 
 import { ChartModule } from 'primeng/chart';
 
@@ -57,7 +58,8 @@ export function provideConfig() {
     SocialLoginModule,
     FormsModule,
     ReactiveFormsModule,
-    ChartModule
+    ChartModule,
+    HttpClientModule
   ],
   entryComponents: [
     CreateQuestionComponent

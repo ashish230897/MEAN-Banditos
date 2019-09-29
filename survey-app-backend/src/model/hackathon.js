@@ -43,16 +43,39 @@ model.insertQuestion = () => {
 
 //--------------------------------------------------------
 // Call this function while registering
+
+model.checkIfExists = (id) => {
+    return collection.getCollection().then((collection) => {
+        return collection.find({id: id}).then((res)=>{
+            if(res)
+                return true;
+            else
+                return false
+        }).catch(() => {
+            return false;
+        })
+    })
+} 
+
 model.createOrg = (obj) => {
     return model.generateOrgId().then((data)=>{
         //console.log(data);
-        let orgId = data;
-        obj.id = orgId;
+        // let orgId = data;
+        // obj.id = orgId;
+        console.log("Inside backend", obj)
         obj.survey = [];
         return collection.getCollection().then((collection) => {
-            return collection.create(obj).then((data)=>{
-                return data;
+            return model.checkIfExists(obj.id).then(response => {
+                if(!response)
+                    return collection.create(obj).then((data)=>{
+                        console.log("Hey");
+                        return data;
+                        
+                    })
+                else
+                    console.log("exists");
             })
+            
         })
     })
 }

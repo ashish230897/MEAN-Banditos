@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { CreateQuestionComponent } from '../create-question/create-question.component';
+import { ActivatedRoute } from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
+import { SurveyService } from '../survey.service';
 
 interface questionInterface{
   qId : Number;
@@ -20,8 +23,17 @@ export class CreateSurveyComponent implements OnInit {
 
   questionList: Array<questionInterface>;
   cnt = 0;
-
-  constructor(private dialog:MatDialog, private formBuilder: FormBuilder) { }
+  mediaURL: any;
+  qTitle : String;
+  constructor(private dialog:MatDialog, private formBuilder: FormBuilder, private route: ActivatedRoute, private _sanitizer: DomSanitizer, private serveyService: SurveyService) {
+    
+    this.route.params.subscribe(param => {
+      console.log(param);
+      // this.mediaURL = param.url;
+      this.mediaURL = param.url ? this._sanitizer.bypassSecurityTrustResourceUrl(param.url) : '';   
+      this.qTitle = param.name;
+    });
+  }
 
   ngOnInit() {
     this.questionList = [];
@@ -56,6 +68,33 @@ export class CreateSurveyComponent implements OnInit {
         return elem;
       }
     })
+  }
+
+  createForm(){
+    let qArray = this.questionList.map((elem) => {
+      let obj = {
+        answers : [],
+        options : elem.qOptionList,
+        type: elem.qType,
+        question: elem.qStatement
+      }
+      return obj;
+    })
+    let obj = {
+      sid: sessionStorage.getItem("email"),
+      start: new Date().toLocaleDateString(),
+      end: new Date().toLocaleDateString(),
+      questions: qArray
+    }
+
+    this.serveyService.insertSurvey(obj).subscribe((result) => {
+      console.log("DONE");
+      
+    },
+    (err) => {
+      console.log(err);
+      
+    });
   }
 
 }
